@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
                                       @Override
                                       public void onClick(View v) {
-                                          new CountDownTimer(30000, 1000){
+                                          new CountDownTimer(20000, 1000){
                                               public void onTick(long millisUntilFinished){
                                                   textView.setText(String.valueOf(counter));
                                                   counter++;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                                               public  void onFinish(){
                                                   textView.setText("FINISH!!");
                                               }
-                                          };
+                                          }.start();
                                       }
         });
 
