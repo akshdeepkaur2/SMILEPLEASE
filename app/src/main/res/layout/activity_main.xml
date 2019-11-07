@@ -28,6 +28,15 @@
     android:layout_marginTop="25dp"
     android:textStyle="bold"
     android:textColor="#4CAF50"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp"
+        android:id="@+id/textView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/button"

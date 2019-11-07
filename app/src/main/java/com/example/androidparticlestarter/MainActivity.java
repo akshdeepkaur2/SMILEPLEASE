@@ -1,10 +1,13 @@
 package com.example.androidparticlestarter;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -20,6 +23,10 @@ import io.particle.android.sdk.utils.Async;
 public class MainActivity extends AppCompatActivity {
     // MARK: Debug info
     private final String TAG="SMARTLIGHT";
+    public int counter;
+    Button button;
+    TextView textView;
+
 
     // MARK: Particle Account Info
     private final String PARTICLE_USERNAME = "akshdeepkaur235@gmail.com";
@@ -34,19 +41,37 @@ public class MainActivity extends AppCompatActivity {
     // MARK: Particle device
     private ParticleDevice mDevice;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // 1. Initialize your connection to the Particle API
         ParticleCloudSDK.init(this.getApplicationContext());
 
         // 2. Setup your device variable
         getDeviceFromCloud();
+        button= (Button) findViewById(R.id.button);
+        textView= (TextView) findViewById(R.id.textView);
+        button.setOnClickListener(new View.OnClickListener(){
+                                      @Override
+                                      public void onClick(View v) {
+                                          new CountDownTimer(30000, 1000){
+                                              public void onTick(long millisUntilFinished){
+                                                  textView.setText(String.valueOf(counter));
+                                                  counter++;
+                                              }
+                                              public  void onFinish(){
+                                                  textView.setText("FINISH!!");
+                                              }
+                                          };
+                                      }
+        });
 
-    }
+
+
+    };
 
 
     /**
